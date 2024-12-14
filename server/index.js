@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js";
 
 //------------------------------------------------------------------------------------------------
 //------------------------ Configurations --------------------------------------------------------
@@ -49,6 +50,9 @@ const upload = multer({ storage });
 //------------------------ Routes with Files -----------------------------------------------------
 //------------------------ Authentication and Authorization --------------------------------------
 //------------------------------------------------------------------------------------------------
+
+//----------route----------middleware function--registering the picture using the auth controller-
+app.post("auth/register", upload.single("picture"), register);
 
 //------------------------------------------------------------------------------------------------
 //------------------------ MONGOOSE SETUP --------------------------------------------------------
